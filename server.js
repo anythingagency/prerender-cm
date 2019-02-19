@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 var prerender = require('./lib');
 
-var server = prerender();
+var server = prerender({
+  chromeLocation: '/usr/bin/google-chrome-stable'
+});
 
+server.use(prerender.whitelist());
 server.use(prerender.sendPrerenderHeader());
 // server.use(prerender.blockResources());
 server.use(prerender.removeScriptTags());
 server.use(prerender.httpHeaders());
+server.use(require('prerender-memory-cache'));
 
 server.start();
