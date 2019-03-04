@@ -1,0 +1,19 @@
+Install Node
+curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+sudo yum install nodejs
+
+Install GIT
+sudo yum install git
+
+Clone Prerender
+git clone https://github.com/anythingagency/prerender-cm.git
+
+Install Chrome
+curl https://intoli.com/install-google-chrome.sh | bash
+
+cd prerender-cm
+
+npm install prerender-memory-cache --save
+export ALLOWED_DOMAINS=www.channelmum.com,channelmum.com
+
+node server.js
